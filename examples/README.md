@@ -2,13 +2,12 @@
 
 The `ballerinax/interzoid.emailinfo` connector provides practical examples illustrating usage in various scenarios.
 
-[//]: # (TODO: Add examples)
-1. 
-2. 
+1. [Sign-up email validation](./signup_email_validation/signup_email_validation.md) - Validate a new sign-up email address and reject disposable ones.
+2. [Lead company enrichment](./lead_company_enrichment/lead_company_enrichment.md) - Enrich a sales lead with the organization behind its email address.
 
 ## Prerequisites
 
-[//]: # (TODO: Add prerequisites)
+Provide your Interzoid API `license` key in a `Config.toml` file in the example directory.
 
 ## Running an example
 

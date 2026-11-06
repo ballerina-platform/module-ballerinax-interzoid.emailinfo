@@ -1,26 +1,57 @@
 # Ballerina Interzoid Email Info connector
 
 [![Build](https://github.com/ballerina-platform/module-ballerinax-interzoid.emailinfo/actions/workflows/ci.yml/badge.svg)](https://github.com/ballerina-platform/module-ballerinax-interzoid.emailinfo/actions/workflows/ci.yml)
-[![GitHub Last Commit](https://img.shields.io/github/last-commit/ballerina-platform/module-ballerinax-interzoid.emailinfo.svg)](https://github.com/ballerina-platform/module-ballerinax-interzoid.emailinfo/commits/master)
-[![GitHub Issues](https://img.shields.io/github/issues/ballerina-platform/ballerina-library/module/interzoid.emailinfo.svg?label=Open%20Issues)](https://github.com/ballerina-platform/ballerina-library/labels/module%interzoid.emailinfo)
+[![GitHub Last Commit](https://img.shields.io/github/last-commit/ballerina-platform/module-ballerinax-interzoid.emailinfo.svg)](https://github.com/ballerina-platform/module-ballerinax-interzoid.emailinfo/commits/main)
+[![GitHub Issues](https://img.shields.io/github/issues/ballerina-platform/ballerina-library/module/interzoid.emailinfo.svg?label=Open%20Issues)](https://github.com/ballerina-platform/ballerina-library/labels/module%2Finterzoid.emailinfo)
 
 ## Overview
 
-[//]: # (TODO: Add overview mentioning the purpose of the module, supported REST API versions, and other high-level details.)
+The Interzoid Email Info connector provides access to the [Interzoid Email Address Validation Demographics API](https://www.interzoid.com/apis/email-address-validation-demographics) from Ballerina. Given an email address, the API validates it and returns domain details, organization data and geolocation information. This connector supports version 1.0.0 of the API.
 
 ## Setup guide
 
-[//]: # (TODO: Add detailed steps to obtain credentials and configure the module.)
+1. Register for an Interzoid API account at [Interzoid Registration](https://www.interzoid.com/register-api-account).
+
+2. Copy the API license key that Interzoid issues for your account.
+
+3. Provide the license key when you create the connector client, for example through a `Config.toml` entry.
 
 ## Quickstart
 
-[//]: # (TODO: Add a quickstart guide to demonstrate a basic functionality of the module, including sample code snippets.)
+1. Import the connector.
+
+    ```ballerina
+    import ballerinax/interzoid.emailinfo;
+    ```
+
+2. Create a `Config.toml` file with your license key.
+
+    ```toml
+    license = "<your-license-key>"
+    ```
+
+3. Create the client.
+
+    ```ballerina
+    configurable string license = ?;
+
+    emailinfo:Client emailClient = check new ({license});
+    ```
+
+4. Retrieve information for an email address.
+
+    ```ballerina
+    public function main() returns error? {
+        emailinfo:EmailInfo _ = check emailClient->getEmailInfo(email = "joesmith@amazon.com");
+    }
+    ```
 
 ## Examples
 
-The `Interzoid Email Info` connector provides practical examples illustrating usage in various scenarios. Explore these [examples](https://github.com/module-ballerinax-interzoid.emailinfo/tree/main/examples/), covering the following use cases:
+The `Interzoid Email Info` connector provides practical examples illustrating usage in various scenarios. Explore these [examples](https://github.com/ballerina-platform/module-ballerinax-interzoid.emailinfo/tree/main/examples/), covering the following use cases:
 
-[//]: # (TODO: Add examples)
+- [signup_email_validation](examples/signup_email_validation/signup_email_validation.md) - Validate a new sign-up email address and reject disposable ones.
+- [lead_company_enrichment](examples/lead_company_enrichment/lead_company_enrichment.md) - Enrich a sales lead with the organization behind its email address.
 
 ## Build from the source
 
@@ -113,4 +144,3 @@ All the contributors are encouraged to read the [Ballerina Code of Conduct](http
 * For more information go to the [`interzoid.emailinfo` package](https://central.ballerina.io/ballerinax/interzoid.emailinfo/latest).
 * For example demonstrations of the usage, go to [Ballerina By Examples](https://ballerina.io/learn/by-example/).
 * Chat live with us via our [Discord server](https://discord.gg/ballerinalang).
-* Post all technical questions on Stack Overflow with the [#ballerina](https://stackoverflow.com/questions/tagged/ballerina) tag.
